@@ -100,7 +100,7 @@ export let inventory = {
         {
           productID: 7,
           productName: "iPhone 12",
-          quantity: 9,
+          quantity: 12,
           price_per_one: 1005,
           description: {
             storage: "256GB",
