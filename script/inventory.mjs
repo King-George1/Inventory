@@ -81,5 +81,6 @@ export let inventory = {
         
     },
     laptop:{},
-    tablet:{}
+    tablet:{},
+    maxId:7 
 }
