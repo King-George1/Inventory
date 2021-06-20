@@ -63,11 +63,16 @@ getTotalCatAndSubCatNum();
 // console.log(subcategories);
 // console.log("Total number of items before any action: " + totalItemQuantity);
 
+const getProductRef = (catName, subCatName, productID) => {
+  let prodRef = inventory[catName][subCatName].products;
+  let product = prodRef.find((x) => x.productID === productID);
+  return product;
+};
+
 //The updateItemQuantity updates a specify product quantity. The function parameters
 //will be taken from the UI click event is fired on the update quantity button
 const updateItemQuantity = (catName, subCatName, productID, newQuantity) => {
-  let prodRef = inventory[catName][subCatName].products;
-  let product = prodRef.find((x) => x.productID === productID);
+  let product = getProductRef(catName, subCatName, productID);
   product.quantity = newQuantity;
 };
 
@@ -80,3 +85,34 @@ const updateItemQuantity = (catName, subCatName, productID, newQuantity) => {
 // console.log("Total number of items after quantity update: " + totalItemQuantity);
 // console.log("Subcategory items after insertion: ");
 // console.log(subcategories);
+
+//Function updateItemDetails is responsible for updating item detais given its
+//catname, subcatname, and productID
+const updateItemDetails = (catName, subCatName, productID, newDetails) => {
+  let product = getProductRef(catName, subCatName, productID);
+  product.description["storage"] = newDetails["storage"];
+  product.description["RAM"] = newDetails["RAM"];
+  product.description["battery"] = newDetails["battery"];
+  product.description["display"] = newDetails["display"];
+  product["productName"] = newDetails["productName"];
+  product["price_per_one"] = newDetails["price_per_one"];
+};
+
+//TEST FOR UPDATE PRODUCT DETAILS. STATUS: PASSED
+// let details = {
+//   storage: '900GB',
+//   RAM: '90GB',
+//   battery: '9999mAh',
+//   display: '30 inches',
+//   productName: 'KING KING',
+//   price_per_one: 10000
+// };
+// console.log("Total number of items before details update: " + totalItemQuantity);
+// console.log("Subcategory items before details update: ");
+// console.log(subcategories);
+// updateItemDetails('phone','Pixel', 1, details);
+// console.log(inventory['phone']['Pixel']['products'][0]);
+// console.log("Total number of items after details update: " + totalItemQuantity);
+// console.log("Subcategory items after details update: ");
+// console.log(subcategories);
+// console.log(inventory['phone']['Pixel']['products']);
