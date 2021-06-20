@@ -116,3 +116,26 @@ const updateItemDetails = (catName, subCatName, productID, newDetails) => {
 // console.log("Subcategory items after details update: ");
 // console.log(subcategories);
 // console.log(inventory['phone']['Pixel']['products']);
+
+const removeItem = (catName, subCatName, productID) => {
+  let prodRef = inventory[catName][subCatName].products;
+  let productIndex = prodRef.findIndex((x) => x.productID === productID);
+  if(productIndex > -1){
+    prodRef.splice(productIndex, 1);
+  getTotalCatAndSubCatNum();
+  }
+}
+
+//TEST FOR THE REMOVE ITEM STATUS: PASSED
+// console.log("Total number of items before details update: " + totalItemQuantity);
+// console.log("Subcategory items before item removal: ");
+// console.log(subcategories);
+// removeItem('phone','Pixel',1);
+// console.log("Total number of items after items removal: " + totalItemQuantity);
+// console.log("Subcategory items after item removal: ");
+// console.log(subcategories);
+// removeItem('phone','Pixel',2);
+// removeItem('phone','iPhone',6);
+// console.log("Total number of items after items removal: " + totalItemQuantity);
+// console.log("Subcategory items after item removal: ");
+// console.log(subcategories);
