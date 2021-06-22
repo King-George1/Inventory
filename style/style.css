@@ -1,7 +1,7 @@
 body{
     width: 90%;
     display: grid;
-    background: #E2E7EF;
+    /* background: #E2E7EF; */
     grid-template-columns: 4% 95%;
     grid-auto-rows: 90vh;
     margin: 2% auto;
@@ -86,6 +86,8 @@ div.search-buttons input, div.search-buttons select{
     padding-left: 0.3rem;
     font-size: 0.9rem;
     font-weight: 500;
+    border: 1px solid #DFDFE3;
+
 }
 
 div.search-buttons button{
@@ -111,8 +113,30 @@ div.search-buttons button:hover{
 
 hr{
     /* color: green; */
-    border: 1px solid #aeb7dd;
+    border: 1px solid #DFDFE3;
 }
+
+section.main-products{
+    margin-top: 1.8%;
+    background: white;
+    border: 1px solid #DFDFE3;
+    padding-top: 0.8%;
+    padding-left: 1.5%;
+}
+
+div.main-products-header{
+    display: grid;
+    grid-template-columns: 1% 14% 20% 12% 8% 12% 12% 6% 5%;
+    column-gap: 1%;
+    text-align: left;
+    color: #A5A5A9;
+    font-weight: bold;
+    font-size: 1rem;
+}
+div.main-products-header div{
+    /* border: 1px solid red; */
+}
+
 
 
 @media only screen and (max-width: 1024px) {

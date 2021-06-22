@@ -1,0 +1,45 @@
+.accordion {
+    background-color: #F2F8FF;
+    color: #444;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    margin-top: 1%;
+    /* font-size: 1rem; */
+    transition: 0.4s;
+
+    display: grid;
+    grid-template-columns: 5% 10% 10% 10% 10%;
+  }
+  
+  .active, .accordion:hover {
+    /* background-color: #ccc; */
+  }
+  
+  .accordion:before {
+    content: '\27A4';
+    /* color: #777; */
+    font-weight: bold;
+    float: left;
+    margin-left: 5px;
+  }
+  
+  .active:before {
+    content: "\2B9F";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    /* background-color: white; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  /* div.product-body{
+      display: grid;
+      grid-template-columns: 1% 14% 20% 12% 8% 12% 12% 6% 5%;
+  } */
