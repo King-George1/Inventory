@@ -77,12 +77,17 @@ div.search-text p{
 div.search-buttons{
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
-    height: 5vh;
+    height: 4vh;
+    margin-bottom: 1.5%;
 }
 
-div.search-buttons input{
-    width: 85%
+div.search-buttons input, div.search-buttons select{
+    width: 85%;
+    padding-left: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
+
 div.search-buttons button{
     background: #3053A5;
     border: 0;
@@ -90,6 +95,23 @@ div.search-buttons button{
     color: white;
     font-weight: 600;
     border-radius: 5%;
+}
+div.search-buttons button:hover{
+    cursor: pointer;
+}
+#manufacturer, #category, #subcategory{
+    background-color: white;
+    background: white;
+    border: 0.2px solid #C1C4D2;
+    color: #333b46;
+}
+#manufacturer:hover, #category:hover, #subcategory:hover{
+    cursor: pointer;
+}
+
+hr{
+    /* color: green; */
+    border: 1px solid #aeb7dd;
 }
 
 
@@ -108,7 +130,7 @@ div.search-buttons button{
     
   }
 
-  @media only screen and (max-width: 720px) {
+  @media only screen and (max-width: 730px) {
     section.container-header{
     display: grid;
     grid-template-columns: 50% 50%;
@@ -123,11 +145,39 @@ div.search-buttons button{
     div.search-buttons{
         grid-template-columns: 20% 20% 20% 20% 20%;
     }
-    div.search-buttons input:last-child{
-        visibility: hidden;
+    div.search-buttons > select:nth-child(5){
+        display: none;
+    }
+    div.search-text{
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    div.search-text > p:nth-child(5){
+        display: none;
+    }
+    section.search-filter{
+        margin-top: 2%;
     }
     
+    
   }
+
+  @media only screen and (max-width: 538px) {
+    div.search-text > p:nth-child(3), div.search-text > p:nth-child(4){
+        display: none;
+    }
+    div.search-text{
+        grid-template-columns: 35% 30%;
+    }
+    div.search-buttons{
+        grid-template-columns: 35% 30% 35%;
+    }
+    div.search-buttons > input:nth-child(3), div.search-buttons > select:nth-child(4){
+        display: none;
+    }
+    section.search-filter{
+        margin-top: 6%;
+    }
+    }
 
   @media only screen and (max-width: 312px) {
     section.container-header{
@@ -140,6 +190,29 @@ div.search-buttons button{
     }
     div.action-buttons{
         visibility: hidden;
+    }
+
+    div.search-text{
+        display: none;
+    }
+    div.search-text{
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+    div.search-buttons{
+        grid-template-columns: 90%;
+    }
+    div.search-buttons > input:nth-child(1){
+        margin-left : 12%;
+    }
+    div.search-buttons > select:nth-child(2){
+        display: none;
+    }
+    div.search-buttons button{
+        display: none;
+    }
+    div.action-buttons{
+        display: none;
     }
     
   }
