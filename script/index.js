@@ -4,6 +4,7 @@ let i;
 let checkboxes = Array.from(document.querySelectorAll('.firstProduct'));
 let subcatcheckboxes = Array.from(document.querySelectorAll('.subcatAct'));
 
+
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -48,21 +49,27 @@ const getProductDetails = (event) => {
 
 // output[0] is itemID, output[1] is CategoryName, output[2] is subcategory name
 //Editing product details
-document.querySelector('span.editprod').addEventListener('click', (e)=>{  
-    let output = getProductDetails(e);
-    console.log(output[0], output[1], output[2]);
-}, false);
+Array.from(document.getElementsByClassName('editprod')).forEach(item =>{
+    item.addEventListener('click', (e)=>{  
+        let output = getProductDetails(e);
+        console.log(output[0], output[1], output[2]);
+    }, false);
+})
 
 //Removing products from the inventory
-document.querySelector('span.deleteprod').addEventListener('click', (e)=>{
-    let output = getProductDetails(e);
-    console.log(output[0], output[1], output[2]);
-}, false);
+Array.from(document.querySelectorAll('span.deleteprod')).forEach(item => {
+    item.addEventListener('click', (e)=>{
+        let output = getProductDetails(e);
+        console.log(output[0], output[1], output[2]);
+    }, false);
+})
 
-document.querySelector('span.updatequan').addEventListener('click', (e)=>{
-    let output = getProductDetails(e);
-    console.log(output[0], output[1], output[2]);
-}, false);
+Array.from(document.querySelectorAll('span.updatequan')).forEach(item => {
+    item.addEventListener('click', (e)=>{
+        let output = getProductDetails(e);
+        console.log(output[0], output[1], output[2]);
+    }, false);
+})
 
 
 const getCategoriesDetails = (event) => {
@@ -84,3 +91,4 @@ document.querySelector('span.deleteprodSub').addEventListener('click', (e)=>{
     let output = getCategoriesDetails(e);
     console.log(output[0], output[1], output[2]);
 }, false);
+

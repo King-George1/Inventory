@@ -9,7 +9,7 @@ export let inventory = {
           quantity: 5,
           price_per_one: 1200,
           description: {
-            storage: "128GB, no slot card",
+            storage: "128GB",
             RAM: "8GB",
             battery: "4080mAh",
             display: "6.0"
@@ -21,7 +21,7 @@ export let inventory = {
           quantity: 12,
           price_per_one: 1005,
           description: {
-            storage: "128GB, no slot card",
+            storage: "128GB",
             RAM: "6GB",
             battery: "3885mAh",
             display: "6.2"
