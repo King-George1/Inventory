@@ -1,9 +1,9 @@
 body{
-    width: 90%;
+    width: 95%;
     display: grid;
     /* background: #E2E7EF; */
     grid-template-columns: 4% 95%;
-    grid-auto-rows: 90vh;
+    grid-auto-rows: 100vh;
     margin: 2% auto;
 }
 aside{
@@ -126,7 +126,7 @@ section.main-products{
 
 div.main-products-header{
     display: grid;
-    grid-template-columns: 1% 14% 20% 12% 8% 12% 12% 6% 5%;
+    grid-template-columns: 1% 1.5% 14% 20% 12% 8% 12% 10% 6% 7%;;
     column-gap: 1%;
     text-align: left;
     color: #A5A5A9;
@@ -137,6 +137,9 @@ div.main-products-header div{
     /* border: 1px solid red; */
 }
 
+/* div.product-actions{
+    visibility: hidden;
+} */
 
 
 @media only screen and (max-width: 1024px) {

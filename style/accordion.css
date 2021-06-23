@@ -1,18 +1,21 @@
-.accordion {
-    background-color: #F2F8FF;
+.accordion, div.panel-contents{
+    background-color: white;
     color: #444;
-    cursor: pointer;
-    padding: 0.5rem;
+    padding: 0rem;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
     margin-top: 1%;
-    /* font-size: 1rem; */
     transition: 0.4s;
-
     display: grid;
-    grid-template-columns: 5% 10% 10% 10% 10%;
+    grid-template-columns: 1% 1.5% 14% 20% 12% 8% 12% 10% 6% 8%;
+    column-gap: 1%;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .accordion-icon:hover{
+    cursor: pointer;
   }
   
   .active, .accordion:hover {
@@ -20,26 +23,32 @@
   }
   
   .accordion:before {
-    content: '\27A4';
+    /* content: '\27A4'; */
     /* color: #777; */
-    font-weight: bold;
+    /* font-weight: bold;
     float: left;
-    margin-left: 5px;
+    margin-left: 5px; */
   }
   
-  .active:before {
+  /* .active:before {
     content: "\2B9F";
-  }
+  } */
   
   .panel {
-    padding: 0 18px;
+    /* padding: 0 18px; */
     /* background-color: white; */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
 
-  /* div.product-body{
-      display: grid;
-      grid-template-columns: 1% 14% 20% 12% 8% 12% 12% 6% 5%;
-  } */
+  div.product-actions{
+    display: none;
+}
+div.editing{
+    display: none; 
+}
+
+span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprodSub:hover, span.deleteprodSub:hover{
+    cursor: pointer;
+}
