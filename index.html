@@ -12,6 +12,8 @@
 </head>
 <body>
     <div id="backdrop"> </div>
+
+    <!-- MODAL FOR EDITING PRODUCT DETAILS -->
     <div class="modal" id="modal-edit">
         <h3>Edit Product Details</h3>
         <div class="editBody">
@@ -37,6 +39,25 @@
                 <input type="text" id="pDisplay">
                 <button class="cancelUpdate">CANCEL</button>
                 <button class="doUpdate">UPDATE PRODUCT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR DELETING A PRODUCT FROM THE INVENTORY -->
+    <div class="modal-delete" id="modal-delete">
+        <h3>Delete Product From Inventory</h3>
+        <div class="deleteBody">
+            <div class="deleteDetails">
+                <p>Are you sure you want to delete Product with <br>
+                    Name: <span class="prName">this products </span><br>
+                    Quantity: <span class="prQuantity">this quantity</span><br>
+                    Category: <span class="prCategory">this category</span>
+                    from your Inventory?
+                </p>
+            </div>
+            <div class="removeProduct">
+                <button class="cancelDelete">CANCEL</button>
+                <button class="doDelete">DELETE PRODUCT</button>
             </div>
         </div>
     </div>

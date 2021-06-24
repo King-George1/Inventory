@@ -76,8 +76,25 @@ span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprod
   animation: fade-slide-in 0.3s ease-out forwards;
 }
 
-.modal h3{
-  /* margin-left: 4%; */
+.modal-delete {
+  position: fixed;
+  z-index: 100;
+  background: white;
+  border-radius: 10px;
+  width: 30%;
+  top: 25vh;
+  left: 35%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: none;
+  height: 45vh;
+}
+
+.modal-delete.visible {
+  display: block;
+  animation: fade-slide-in 0.3s ease-out forwards;
+}
+
+.modal h3, .modal-delete h3{
   margin-bottom: 0.5rem;
   background: #0C2E82;
   color: white;
@@ -116,7 +133,7 @@ div.editBody .editDetails > p, div.editBody .editDescription > p{
   font-size: 1rem;
 }
 
-div.editDescription button{
+div.editDescription button, .removeProduct button{
   margin-top: 1.3rem;
   height: 5vh;
   margin-right: 1rem;
@@ -127,7 +144,7 @@ div.editDescription button{
   border-radius: 5px;
 }
 
-div.editDescription button:hover{
+div.editDescription button:hover, .removeProduct button:hover{
   cursor: pointer;
 }
 
@@ -135,11 +152,20 @@ div.editDescription button:hover{
   margin-top: 0;
 }
 
-.cancelUpdate{
+.cancelUpdate, .cancelDelete{
   background: rgb(190, 32, 32);
 }
-.doUpdate{
+.doUpdate, .doDelete{
   background: #0C2E82;
+}
+
+.deleteDetails > p{
+  font-size: 1.2rem;
+  padding: 3%;
+}
+.removeProduct button{
+  margin-left: 4.7%;
+  margin-top: 0.3rem;
 }
 
 
