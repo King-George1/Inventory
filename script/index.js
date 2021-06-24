@@ -5,6 +5,7 @@ let checkboxes = Array.from(document.getElementsByClassName('firstProduct'));
 let subcatcheckboxes = Array.from(document.getElementsByClassName('subcatAct'));
 const editModal = document.getElementById("modal-edit");
 const deleteModal = document.getElementById("modal-delete");
+const qtyUpdateModal = document.getElementById("modal-qty-update");
 const backDrop = document.getElementById("backdrop");
 
 
@@ -60,6 +61,9 @@ const toggleEditModal = () => {
 const toggleDeleteModal = () => {
     deleteModal.classList.toggle('visible');
 }
+const toggleQtyUpdateModal = () => {
+    qtyUpdateModal.classList.toggle('visible');
+}
 // output[0] is itemID, output[1] is CategoryName, output[2] is subcategory name
 //Editing product details
 Array.from(document.getElementsByClassName('editprod')).forEach(item =>{
@@ -85,6 +89,8 @@ Array.from(document.getElementsByClassName('updatequan')).forEach(item => {
     item.addEventListener('click', (e)=>{
         let output = getProductDetails(e);
         console.log(output[0], output[1], output[2]);
+        qtyUpdateModal.classList.toggle("visible");
+        toggleBackDrop();
     }, false);  
 })
 
@@ -118,6 +124,10 @@ document.querySelector('.cancelUpdate').addEventListener('click',(e) => {
 document.querySelector('.cancelDelete').addEventListener('click',(e) => {
     toggleBackDrop();
     toggleDeleteModal();
+})
+document.querySelector('.cancelQtyUpdate').addEventListener('click',(e) => {
+    toggleBackDrop();
+    toggleQtyUpdateModal();
 })
 
 

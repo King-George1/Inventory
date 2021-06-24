@@ -163,9 +163,9 @@ const populateProducts = (subCatProducts) => {
                                 <div>GH₵${singleProduct.price_per_one}</div>
                                 <div>${singleProduct.quantity}</div>
                                 <div class="product-actions">
-                                    <span class="editprod"><i class="far fa-edit"></i>&nbsp;</span>
-                                    <span class="deleteprod"><i class="far fa-trash-alt"></i>&nbsp;</span>
-                                    <span class="updatequan"><i class="fas fa-plus"> <i class="fas fa-minus"></i></i>&nbsp;</span>
+                                    <span class="editprod"><i class="far fa-edit"></i></span>
+                                    <span class="deleteprod"><i class="far fa-trash-alt"></i></span>
+                                    <span class="updatequan"><i class="fas fa-plus"></i> <i class="fas fa-minus"></i>&nbsp;</span>
                                     
                                 </div>
                             </div>
@@ -194,8 +194,9 @@ Object.keys(inventories).forEach((category) => {
       <div></div>
       <div>${subcategories[subcatName]}</div>
       <div class="editing">
-          <span class="editprodSub"><i class="far fa-edit"></i>&nbsp;</span>
+          <span class="editprodSub"><i class="far fa-edit"></i></span>
           <span class="deleteprodSub"><i class="far fa-trash-alt"></i></span>
+          <span class="addprodSub"><i class="fas fa-plus"></i></span>
       </div>
       </button>
       
