@@ -1,8 +1,10 @@
 // ACCORDION;
-let acc =Array.from(document.querySelectorAll(".accordion-icon"));
+let acc =Array.from(document.getElementsByClassName("accordion-icon"));
 let i;
-let checkboxes = Array.from(document.querySelectorAll('.firstProduct'));
-let subcatcheckboxes = Array.from(document.querySelectorAll('.subcatAct'));
+let checkboxes = Array.from(document.getElementsByClassName('firstProduct'));
+let subcatcheckboxes = Array.from(document.getElementsByClassName('subcatAct'));
+const editModal = document.getElementById("modal-edit");
+const backDrop = document.getElementById("backdrop");
 
 
 for (i = 0; i < acc.length; i++) {
@@ -47,28 +49,37 @@ const getProductDetails = (event) => {
     return [itemID, itemCat, itemSub];
 }
 
+const toggleBackDrop = (_) => {
+    backDrop.classList.toggle("visible");
+  };
+
+const toggleEditModal = () => {
+    editModal.classList.toggle('visible');
+}
 // output[0] is itemID, output[1] is CategoryName, output[2] is subcategory name
 //Editing product details
 Array.from(document.getElementsByClassName('editprod')).forEach(item =>{
     item.addEventListener('click', (e)=>{  
         let output = getProductDetails(e);
         console.log(output[0], output[1], output[2]);
+        editModal.classList.toggle("visible");
+        toggleBackDrop();
     }, false);
 })
 
 //Removing products from the inventory
-Array.from(document.querySelectorAll('span.deleteprod')).forEach(item => {
+Array.from(document.getElementsByClassName('deleteprod')).forEach(item => {
     item.addEventListener('click', (e)=>{
         let output = getProductDetails(e);
         console.log(output[0], output[1], output[2]);
     }, false);
 })
 
-Array.from(document.querySelectorAll('span.updatequan')).forEach(item => {
+Array.from(document.getElementsByClassName('updatequan')).forEach(item => {
     item.addEventListener('click', (e)=>{
         let output = getProductDetails(e);
         console.log(output[0], output[1], output[2]);
-    }, false);
+    }, false);  
 })
 
 
@@ -91,4 +102,15 @@ document.querySelector('span.deleteprodSub').addEventListener('click', (e)=>{
     let output = getCategoriesDetails(e);
     console.log(output[0], output[1], output[2]);
 }, false);
+
+
+document.querySelector('.cancelUpdate').addEventListener('click',(e) => {
+    toggleBackDrop();
+    toggleEditModal();
+})
+
+document.querySelector('.cancelUpdate').addEventListener('click',(e) => {
+    console.log('hello update button');
+})
+
 

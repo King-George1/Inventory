@@ -11,6 +11,36 @@
     <link rel="stylesheet" href="style/accordion.css">
 </head>
 <body>
+    <div id="backdrop"> </div>
+    <div class="modal" id="modal-edit">
+        <h3>Edit Product Details</h3>
+        <div class="editBody">
+            <div class="editDetails">
+                <p>PRODUCT NAME</p>
+                <input type="text" id="pName">
+                <p>PRODUCT PRICE (PER PIECE)</p>
+                <input type="text" id="pPrice">
+                <p>PRODUCT MANUFACTURER</p>
+                <input type="text" id="pManufacturer">
+                <p>PRODUCT NAME</p>
+                <input type="text" id="Name">
+            </div>
+            <div class="editDescription">
+                
+                <p>PRODUCT STORAGE</p>
+                <input type="text" id="pStorage">
+                <p>RAM</p>
+                <input type="text" id="pRAM">
+                <p>BATTERY</p>
+                <input type="text" id="pBattery">
+                <p>DISPLAY</p>
+                <input type="text" id="pDisplay">
+                <button class="cancelUpdate">CANCEL</button>
+                <button class="doUpdate">UPDATE PRODUCT</button>
+            </div>
+        </div>
+    </div>
+
     <aside></aside>
     <main>
         <header>
@@ -75,170 +105,10 @@
                     <div>Category</div>
                     <div>Price(per piece)</div>
                     <div>Qnty</div>
-                    <div class="operations"></div>
+                    <div class="operations">Actions</div>
                 </div>
                 <div class="product-body">
-                    <!-- ONE CATEGORY PRODUCT -->
-                    
-                        <!-- <button class="accordion">
-                            <div class="accordion-icon"><i class="zmdi zmdi-chevron-down"></i></div>
-                        <div>
-                            <input type="checkbox" class="subcatAct" name="subcatAct" value="Product1">
-                        </div>
-                            <div>Galaxy</div>
-                            <div></div>
-                            <div>Samsung</div>
-                            <div></div>
-                            <div>Phone</div>
-                            <div></div>
-                            <div>Quantity</div>
-                            <div class="editing">
-                                <span class="editprodSub"><i class="far fa-edit"></i>&nbsp;</span>
-                                <span class="deleteprodSub"><i class="far fa-trash-alt"></i></span>
-                            </div>
-                        </button>
-
-                        
-                        <div class="panel">
-                            <div class="panel-contents">
-                                <div></div>
-                                <div></div>
-                                <div>
-                                    <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                    Galaxy X1
-                                </div>
-                                <div>Storage: 25GB RAM, Screen
-                                </div>
-                                <div>Samsung</div>
-                                <div>399</div>
-                                <div>Phone</div>
-                                <div>Samsung</div>
-                                <div>20</div>
-                                <div class="product-actions">
-                                    <span class="editprod"><i class="far fa-edit"></i> &nbsp;</span>
-                                    <span class="deleteprod"><i class="far fa-trash-alt"></i> &nbsp;</span>
-                                    <span class="updatequan"><i class="fas fa-plus"></i> &nbsp;&nbsp;</span>
-                                </div>
-                            </div>
-                            <div class="panel-contents">
-                                <div></div>
-                                <div></div>
-                                <div>
-                                    <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                    Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div class="product-actions">
-                                    <i class="far fa-edit"></i> &nbsp;
-                                    <i class="far fa-trash-alt"></i> &nbsp;
-                                    <i class="fas fa-plus"></i> &nbsp;
-                                </div>
-                            </div>
-                            <div class="panel-contents">
-                                <div></div>
-                                <div></div>
-                                <div>
-                                    <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                    Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div>Hello</div>
-                                <div class="product-actions">
-                                    <i class="far fa-edit"></i> &nbsp;
-                                    <i class="far fa-trash-alt"></i> &nbsp;
-                                    <i class="fas fa-plus"></i> &nbsp;
-                                </div>
-                            </div>
-                            
-                        </div> -->
-                    
-                    <!-- END OF CATEGORY PRODUCT -->
-                    
-                    <!-- START OF CATEGORY TWO -->
-
-                    <!-- <button class="accordion">
-                        <div class="accordion-icon"><i class="zmdi zmdi-chevron-down"></i></div>
-                    <div>
-                        <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                    </div>
-                        <div>Galaxy</div>
-                        <div></div>
-                        <div>Samsung</div>
-                        <div></div>
-                        <div>Phone</div>
-                        <div></div>
-                        <div>Quantity</div>
-                        <div class="editing"></div>
-                    </button>
-
-                    
-                    <div class="panel">
-                        <div class="panel-contents">
-                            <div></div>
-                            <div></div>
-                            <div>
-                                <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                Hello
-                            </div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div class="product-actions">
-                                <i class="far fa-edit"></i> &nbsp;
-                                <i class="far fa-trash-alt"></i> &nbsp;
-                                <i class="fas fa-plus"></i> &nbsp;
-                            </div>
-                        </div>
-                        <div class="panel-contents">
-                            <div></div>
-                            <div></div>
-                            <div>
-                                <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div class="product-actions">
-                                <i class="far fa-edit"></i> &nbsp;
-                                <i class="far fa-trash-alt"></i> &nbsp;
-                                <i class="fas fa-plus"></i> &nbsp;
-                            </div>
-                        </div>
-                        <div class="panel-contents">
-                            <div></div>
-                            <div></div>
-                            <div>
-                                <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div>Hello</div>
-                            <div class="product-actions">
-                                <i class="far fa-edit"></i> &nbsp;
-                                <i class="far fa-trash-alt"></i> &nbsp;
-                                <i class="fas fa-plus"></i> &nbsp;
-                            </div>
-                        </div>
-                        
-                    </div> -->
-
-                    <!-- END OF CATEGORY TWO -->
+                   
                     
                 </div>
             </section>

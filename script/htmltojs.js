@@ -163,9 +163,10 @@ const populateProducts = (subCatProducts) => {
                                 <div>GH₵${singleProduct.price_per_one}</div>
                                 <div>${singleProduct.quantity}</div>
                                 <div class="product-actions">
-                                    <span class="editprod"><i class="far fa-edit"></i> &nbsp;</span>
-                                    <span class="deleteprod"><i class="far fa-trash-alt"></i> &nbsp;</span>
-                                    <span class="updatequan"><i class="fas fa-plus"></i> &nbsp;&nbsp;</span>
+                                    <span class="editprod"><i class="far fa-edit"></i>&nbsp;</span>
+                                    <span class="deleteprod"><i class="far fa-trash-alt"></i>&nbsp;</span>
+                                    <span class="updatequan"><i class="fas fa-plus"></i>&nbsp;</span>
+                                    <span class="updatequan"><i class="fas fa-minus"></i>&nbsp;&nbsp;</span>
                                 </div>
                             </div>
         `;
