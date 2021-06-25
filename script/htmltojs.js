@@ -120,46 +120,18 @@ window.onload = () => {
           },
         },
         laptop: {
-          Pixel: {
-              manufacturer: "Google",
-              products: [
-                {
-                  productID: 9,
-                  productName: "Pixel 5",
-                  quantity: 5,
-                  price_per_one: 1200,
-                  description: {
-                    storage: "128GB, no slot card",
-                    RAM: "8GB",
-                    battery: "4080mAh",
-                    display: "6.0",
-                  },
-                },
-                {
-                  productID: 10,
-                  productName: "Pixel 4a 5G",
-                  quantity: 12,
-                  price_per_one: 1005,
-                  description: {
-                    storage: "128GB, no slot card",
-                    RAM: "6GB",
-                    battery: "3885mAh",
-                    display: "6.2",
-                  },
-                },
-              ],
-            }
+          
         },
         tablet: {},
       };
-    if(sessionStorage.getItem('myInventory') === null){
-        sessionStorage.setItem('myInventory', JSON.stringify(inventory))
-        // sessionStorage['myInventory'] = JSON.stringify(inventory)
-        inventories = JSON.parse(sessionStorage.getItem('myInventory'));
+    if(localStorage.getItem('myInventory') === null){
+        localStorage.setItem('myInventory', JSON.stringify(inventory))
+        // localStorage['myInventory'] = JSON.stringify(inventory)
+        inventories = JSON.parse(localStorage.getItem('myInventory'));
     }
     else{
         console.log("welcome starter");
-        inventories = JSON.parse(sessionStorage.getItem('myInventory'));
+        inventories = JSON.parse(localStorage.getItem('myInventory'));
     }
 
 console.log(inventories);
@@ -187,26 +159,36 @@ const getTotalCatAndSubCatNum = () => {
     });
   });
 };;
-// sessionStorage.setItem("invent", JSON.stringify(inventory));
+// localStorage.setItem("invent", JSON.stringify(inventory));
 
 let productsBody = document.querySelector(".product-body");
 let summaryPage = document.querySelector('.summary');
 let anotherDiv = document.createElement("div");
-// let inventories = JSON.parse(sessionStorage.getItem("invent"));
+// let inventories = JSON.parse(localStorage.getItem("invent"));
 getTotalCatAndSubCatNum();
-
+const populateTotalItems = (items) => {
+  let pOutput = "";
+  Object.keys(items).forEach(item => {
+    pOutput += `<p> ${item} Phones : ${items[item]}  </p>`;
+  });
+  return pOutput;
+}
 
 summaryPage.innerHTML = `
 <div class="summary-items totalNumberOfItems">
 <p>Total Number of Items</p>
 <p>${totalItemQuantity}</p>
 </div>
-<div class="summary-items itemsInStock"></div>
+<div class="summary-items itemsInStock">
+${populateTotalItems(subcategories)}
+</div>
 <div class="summary-items totalNumberOfCategories">
 <p>Total Number of Categories</p>
 <p>${Object.keys(subcategories).length}</p>
 </div>
 `;
+
+
 
 const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
   let output = "";
@@ -324,7 +306,7 @@ const updateItemDetails = (catName, subCatName, productID, newDetails) => {
     product["productName"] = newDetails["productName"];
     product["price_per_one"] = newDetails["price_per_one"];
 
-    sessionStorage.setItem('myInventory', JSON.stringify(inventories))
+    localStorage.setItem('myInventory', JSON.stringify(inventories))
   };
 
   const removeItem = (catName, subCatName, productID) => {
@@ -557,7 +539,7 @@ document.querySelector('.doUpdate').addEventListener('click', (e) => {
     // console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
     toggleBackDrop();
     toggleEditModal();
-    //Update the sessionStorage
+    //Update the localStorage
     location.reload();
 
 }, false)
@@ -568,14 +550,14 @@ document.querySelector('.doQtyUpdate').addEventListener('click', ()=>{
     console.log('hi king');
     let newIndex = inventories[productCategoryName][productSubCatName]['products'].findIndex(x => x.productID === singleProductID);
     inventories[productCategoryName][productSubCatName]['products'][newIndex].quantity = newQty;
-    sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+    localStorage.setItem('myInventory', JSON.stringify(inventories));
     
     location.reload();
 }, false);
 
 document.querySelector('.doDelete').addEventListener('click', ()=> {
   removeItem(productCategoryName,productSubCatName, singleProductID);
-  sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+  localStorage.setItem('myInventory', JSON.stringify(inventories));
   location.reload();
 },false);
 
@@ -602,13 +584,13 @@ document.querySelector('.doAddItem').addEventListener('click', (e) => {
 
   let newProdDetails = {storage: prodStorage, RAM: prodRAM, battery: prodBattery, display: prodDisplay};
   addItem(productCategoryName, productSubCatName, productName, prodQuantity, pricePerOne, newProdDetails);
-  sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+  localStorage.setItem('myInventory', JSON.stringify(inventories));
   clearInputValues(TheName, ThePrice, TheManufacturer, TheStorage, TheRAM, TheBattery, TheDisplay);
   TheQuantity.value = "";
   // console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
   toggleBackDrop();
   toggleAddItemModal();
-  //Update the sessionStorage
+  //Update the localStorage
   
   location.reload();
 

@@ -263,7 +263,7 @@ div.summary{
 
 .summary-items{
   width: 200px;
-  height: 70px;
+  height: 80px;
   text-align: center;
 }
 
@@ -277,6 +277,11 @@ div.summary{
 
 .totalNumberOfCategories{
   border:3px solid #0C2E82;
+}
+
+.summary-items p{
+  margin: 2px;
+  padding: 2px;
 }
 
 
