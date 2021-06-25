@@ -196,9 +196,19 @@ getTotalCatAndSubCatNum();
 
 const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
   let output = "";
+  let backgroundColor = "";
   subCatProducts.forEach((singleProduct) => {
+    if(singleProduct.quantity >= 1 && singleProduct.quantity <= 20){
+      backgroundColor = '#F2E849';
+    }
+    else if(singleProduct.quantity > 20){
+      backgroundColor = '#76FF7A';
+    }
+    else if(singleProduct.quantity < 1){
+      backgroundColor = '#F78966';
+    }
     output += `
-        <div class="panel-contents">
+        <div class="panel-contents" style="background:${backgroundColor}">
                                 <div></div>
                                 <div></div>
                                 <div>
