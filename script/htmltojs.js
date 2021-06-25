@@ -290,6 +290,8 @@ const updateItemDetails = (catName, subCatName, productID, newDetails) => {
     product.description["display"] = newDetails["display"];
     product["productName"] = newDetails["productName"];
     product["price_per_one"] = newDetails["price_per_one"];
+
+    sessionStorage.setItem('myInventory', JSON.stringify(inventories))
   };
 
 
@@ -449,11 +451,12 @@ document.querySelector('.doUpdate').addEventListener('click', (e) => {
     let newProdDetails = {storage: prodStorage, RAM: prodRAM, battery: prodBattery, display: prodDisplay, productName:productName, price_per_one:pricePerOne};
 
     updateItemDetails(productCategoryName, productSubCatName, singleProductID, newProdDetails);
-
     clearInputValues(TheName, ThePrice, TheManufacturer, TheStorage, TheRAM, TheBattery, TheDisplay);
-    console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
+    // console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
     toggleBackDrop();
     toggleEditModal();
+    //Update the sessionStorage
+    location.reload();
 
 }, false)
 
