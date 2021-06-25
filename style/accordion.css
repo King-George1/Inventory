@@ -253,4 +253,32 @@ div.editDescription button:hover, .removeProduct button:hover, .qtyUpdateBtns bu
   margin-top: 0.3rem;
 }
 
+div.summary{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  width: 60%;
+  margin: 0 auto;
+
+}
+
+.summary-items{
+  width: 200px;
+  height: 70px;
+  text-align: center;
+}
+
+.totalNumberOfItems{
+  border:3px solid #0C2E82;
+}
+
+.itemsInStock{
+  border:3px solid #0C2E82;
+}
+
+.totalNumberOfCategories{
+  border:3px solid #0C2E82;
+}
+
+
+
 

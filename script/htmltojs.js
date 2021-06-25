@@ -190,9 +190,23 @@ const getTotalCatAndSubCatNum = () => {
 // sessionStorage.setItem("invent", JSON.stringify(inventory));
 
 let productsBody = document.querySelector(".product-body");
+let summaryPage = document.querySelector('.summary');
 let anotherDiv = document.createElement("div");
 // let inventories = JSON.parse(sessionStorage.getItem("invent"));
 getTotalCatAndSubCatNum();
+
+
+summaryPage.innerHTML = `
+<div class="summary-items totalNumberOfItems">
+<p>Total Number of Items</p>
+<p>${totalItemQuantity}</p>
+</div>
+<div class="summary-items itemsInStock"></div>
+<div class="summary-items totalNumberOfCategories">
+<p>Total Number of Categories</p>
+<p>${Object.keys(subcategories).length}</p>
+</div>
+`;
 
 const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
   let output = "";
@@ -208,7 +222,7 @@ const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
       backgroundColor = '#F78966';
     }
     output += `
-        <div class="panel-contents" style="background:${backgroundColor}">
+        <div class="panel-contents">
                                 <div></div>
                                 <div></div>
                                 <div>
@@ -222,7 +236,7 @@ const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
                                 <div>000${singleProduct.productID}</div>
                                 <div id="${cate}">${subcatName}</div>
                                 <div>GH₵${singleProduct.price_per_one}</div>
-                                <div>${singleProduct.quantity}</div>
+                                <div style="background:${backgroundColor}">${singleProduct.quantity}</div>
                                 <div class="product-actions">
                                     <span class="editprod"><i class="far fa-edit"></i></span>
                                     <span class="deleteprod"><i class="far fa-trash-alt"></i></span>
@@ -599,7 +613,7 @@ document.querySelector('.doAddItem').addEventListener('click', (e) => {
   location.reload();
 
 }, false)
-
+console.log(subcategories);
 
 }
 
