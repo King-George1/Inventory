@@ -153,7 +153,7 @@ window.onload = () => {
       };
     if(sessionStorage.getItem('myInventory') === null){
         sessionStorage.setItem('myInventory', JSON.stringify(inventory))
-        sessionStorage['myInventory'] = JSON.stringify(inventory)
+        // sessionStorage['myInventory'] = JSON.stringify(inventory)
         inventories = JSON.parse(sessionStorage.getItem('myInventory'));
     }
     else{
@@ -198,7 +198,7 @@ const populateProducts = (subCatProducts, subcatName, cate, manufacturer) => {
                                 <div></div>
                                 <div>
                                     <input type="checkbox" class="firstProduct" name="firstProduct" value="Product1">
-                                    ${singleProduct.productName}
+                                    <span>${singleProduct.productName}</span>
                                 </div> 
                                 <div>
                                 Storage: ${singleProduct.description.storage}
@@ -274,6 +274,8 @@ const backDrop = document.getElementById("backdrop");
 let productCategoryName = "";
 let productSubCatName = "";
 let singleProductID = 0;
+let sngProductName = "";
+let sngProductQty = 0;
 
 
 const getProductRef = (catName, subCatName, productID) => {
@@ -336,6 +338,9 @@ const getProductDetails = (event) => {
     let itemBrand = ref.children[6].innerHTML;
     let itemCart = ref.children[6].getAttribute('id');
     let itemSub = ref.children[7].innerHTML;
+    sngProductQty = +ref.children[8].innerHTML;
+    sngProductName = ref.children[2].lastElementChild.innerHTML;
+    // console.log(itemNumb, itemName);
     return [itemID, itemBrand, itemSub, itemCart];
 }
 
@@ -381,6 +386,12 @@ Array.from(document.getElementsByClassName('updatequan')).forEach(item => {
         let output = getProductDetails(e);
         console.log(output[0], output[1], output[2], output[3]);
         qtyUpdateModal.classList.toggle("visible");
+        singleProductID = output[0];
+        productCategoryName = output[3];
+        productSubCatName = output[1];
+        console.log(singleProductID, productCategoryName, productSubCatName);
+        document.getElementById('singleProductlabel').innerText = sngProductName;
+        document.getElementById('singleProductNumber').value = sngProductQty;
         toggleBackDrop();
     }, false);  
 })
@@ -460,9 +471,17 @@ document.querySelector('.doUpdate').addEventListener('click', (e) => {
 
 }, false)
 
-
-
-
+document.querySelector('.doQtyUpdate').addEventListener('click', ()=>{
+    let newQty = document.getElementById('singleProductNumber').valueAsNumber;
+    console.log(newQty);
+    console.log('hi king');
+    let newIndex = inventories[productCategoryName][productSubCatName]['products'].findIndex(x => x.productID === singleProductID);
+    inventories[productCategoryName][productSubCatName]['products'][newIndex].quantity = newQty;
+    sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+    
+    location.reload();
+}, false);
 
 
 }
+
