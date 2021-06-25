@@ -3,6 +3,7 @@
 //JAVASCRIPT DOM OPERATIONS
 window.onload = () => {
     let inventories = '';
+    let maxProductID = 1;
     let inventory = {
         phone: {
           Pixel: {
@@ -175,13 +176,17 @@ const getTotalCatAndSubCatNum = () => {
     subcat.forEach((subcatName) => {
       let subcatNumber = 0;
       ref[subcatName].products.forEach((y) => {
+        y.productID > maxProductID
+          ? (maxProductID = y.productID)
+          : (maxProductID = maxProductID);
+
         totalItemQuantity += y.quantity;
         subcatNumber += y.quantity;
       });
       subcategories[subcatName] = subcatNumber;
     });
   });
-};
+};;
 // sessionStorage.setItem("invent", JSON.stringify(inventory));
 
 let productsBody = document.querySelector(".product-body");
@@ -270,12 +275,14 @@ let subcatcheckboxes = Array.from(document.getElementsByClassName('subcatAct'));
 const editModal = document.getElementById("modal-edit");
 const deleteModal = document.getElementById("modal-delete");
 const qtyUpdateModal = document.getElementById("modal-qty-update");
+const addItemModal = document.getElementById("modal-add-items");
 const backDrop = document.getElementById("backdrop");
 let productCategoryName = "";
 let productSubCatName = "";
 let singleProductID = 0;
 let sngProductName = "";
 let sngProductQty = 0;
+
 
 
 const getProductRef = (catName, subCatName, productID) => {
@@ -294,6 +301,38 @@ const updateItemDetails = (catName, subCatName, productID, newDetails) => {
     product["price_per_one"] = newDetails["price_per_one"];
 
     sessionStorage.setItem('myInventory', JSON.stringify(inventories))
+  };
+
+  const removeItem = (catName, subCatName, productID) => {
+    let prodRef = inventories[catName][subCatName].products;
+    let productIndex = prodRef.findIndex((x) => x.productID === productID);
+    if(productIndex > -1){
+      prodRef.splice(productIndex, 1);
+    getTotalCatAndSubCatNum();
+    }
+  }
+
+
+  const addItem = (
+    cat_name,
+    subcat_name,
+    prodName,
+    prodQuantity,
+    prodPrice,
+    prodDescription
+  ) => {
+    let newItem = {
+      productID: maxProductID + 1,
+      productName: prodName,
+      quantity: prodQuantity,
+      price_per_one: prodPrice,
+      description: prodDescription,
+    };
+    inventories[cat_name][subcat_name].products.push(newItem);
+    //   maxProductID++;
+  
+    //Here the function will update the items quantity and the subcategory items quantity
+    getTotalCatAndSubCatNum();
   };
 
 
@@ -357,6 +396,9 @@ const toggleDeleteModal = () => {
 const toggleQtyUpdateModal = () => {
     qtyUpdateModal.classList.toggle('visible');
 }
+const toggleAddItemModal = () => {
+  addItemModal.classList.toggle('visible');
+}
 // output[0] is itemID, output[1] is subcategory or brandName, output[3] is category name
 //Editing product details
 Array.from(document.getElementsByClassName('editprod')).forEach(item =>{
@@ -375,7 +417,15 @@ Array.from(document.getElementsByClassName('editprod')).forEach(item =>{
 Array.from(document.getElementsByClassName('deleteprod')).forEach(item => {
     item.addEventListener('click', (e)=>{
         let output = getProductDetails(e);
+        singleProductID = output[0];
+        productCategoryName = output[3];
+        productSubCatName = output[1];
         console.log(output[0], output[1], output[2], output[3]);
+        document.getElementById('prName').innerText = sngProductName;
+        document.getElementById('prQuantity').innerText = sngProductQty;
+        document.getElementById('prID').innerText = singleProductID;
+        document.getElementById('prCategory').innerText = productCategoryName;
+        document.getElementById('prBrand').innerText = productSubCatName;
         deleteModal.classList.toggle("visible");
         toggleBackDrop();
     }, false);
@@ -407,30 +457,46 @@ const getCategoriesDetails = (event) => {
 
 //output[0] is the subcategory name, output[1] is the manufacturer name and output[2] is the category name
 //Editing category details
-document.querySelector('span.editprodSub').addEventListener('click', (e)=>{
-    let output = getCategoriesDetails(e);
-    console.log(output[0], output[1], output[2]);
-}, false);
+Array.from(document.getElementsByClassName('editprodSub')).forEach(x => {x.addEventListener("click", (e) => {
+  let output = getCategoriesDetails(e);
+  console.log(output[0], output[1], output[2]);
+}, false)});
+Array.from(document.getElementsByClassName('deleteprodSub')).forEach(x => {x.addEventListener("click", (e) => {
+  let output = getCategoriesDetails(e);
+  console.log(output[0], output[1], output[2]);
+}, false)});
 
-document.querySelector('span.deleteprodSub').addEventListener('click', (e)=>{
-    let output = getCategoriesDetails(e);
-    console.log(output[0], output[1], output[2]);
-}, false);
+
+Array.from(document.getElementsByClassName('addprodSub')).forEach(x => {x.addEventListener("click", (e) => {
+  let output = getCategoriesDetails(e);
+  console.log(output[0], output[1], output[2]);
+  productCategoryName = output[2];
+  productSubCatName = output[0];
+  console.log("This is King George for you");
+  addItemModal.classList.toggle("visible");
+  toggleBackDrop();
+}, false)});
+
+
 
 
 document.querySelector('.cancelUpdate').addEventListener('click',(e) => {
     toggleBackDrop();
     toggleEditModal();
-})
+});
 
 document.querySelector('.cancelDelete').addEventListener('click',(e) => {
     toggleBackDrop();
     toggleDeleteModal();
-})
+});
 document.querySelector('.cancelQtyUpdate').addEventListener('click',(e) => {
     toggleBackDrop();
     toggleQtyUpdateModal();
-})
+});
+document.querySelector('.cancelAddItem').addEventListener('click',(e) => {
+    toggleBackDrop();
+    toggleAddItemModal();
+});
 
 const clearInputValues = (input1, input2, input3, input4, input5, input6, input7) => {
     input1.value = "";
@@ -463,6 +529,7 @@ document.querySelector('.doUpdate').addEventListener('click', (e) => {
 
     updateItemDetails(productCategoryName, productSubCatName, singleProductID, newProdDetails);
     clearInputValues(TheName, ThePrice, TheManufacturer, TheStorage, TheRAM, TheBattery, TheDisplay);
+
     // console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
     toggleBackDrop();
     toggleEditModal();
@@ -481,6 +548,47 @@ document.querySelector('.doQtyUpdate').addEventListener('click', ()=>{
     
     location.reload();
 }, false);
+
+document.querySelector('.doDelete').addEventListener('click', ()=> {
+  removeItem(productCategoryName,productSubCatName, singleProductID);
+  sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+  location.reload();
+},false);
+
+
+document.querySelector('.doAddItem').addEventListener('click', (e) => {
+  let TheName = document.getElementById('ppName');
+  let ThePrice = document.getElementById('ppPrice');
+  let TheManufacturer = document.getElementById('ppManufacturer');
+  let TheStorage = document.getElementById('ppStorage');
+  let TheRAM = document.getElementById('ppRAM');
+  let TheBattery = document.getElementById('ppBattery');
+  let TheDisplay = document.getElementById('ppDisplay');
+  let TheQuantity = document.getElementById('ppQuantity');
+
+  let productName = TheName.value;
+  let pricePerOne = ThePrice.value;
+  let prodManufacturer = TheManufacturer.value;
+  let prodStorage = TheStorage.value;
+  let prodRAM = TheRAM.value;
+  let prodBattery = TheBattery.value;
+  let prodDisplay = TheDisplay.value;
+  let prodQuantity = TheQuantity.valueAsNumber;
+  
+
+  let newProdDetails = {storage: prodStorage, RAM: prodRAM, battery: prodBattery, display: prodDisplay};
+  addItem(productCategoryName, productSubCatName, productName, prodQuantity, pricePerOne, newProdDetails);
+  sessionStorage.setItem('myInventory', JSON.stringify(inventories));
+  clearInputValues(TheName, ThePrice, TheManufacturer, TheStorage, TheRAM, TheBattery, TheDisplay);
+  TheQuantity.value = "";
+  // console.log(productName, pricePerOne, prodManufacturer, prodStorage, prodRAM, prodBattery, prodDisplay);
+  toggleBackDrop();
+  toggleAddItemModal();
+  //Update the sessionStorage
+  
+  location.reload();
+
+}, false)
 
 
 }

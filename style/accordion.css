@@ -37,7 +37,7 @@ div.editing{
     display: none; 
 }
 
-span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprodSub:hover, span.deleteprodSub:hover{
+span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprodSub:hover, span.deleteprodSub:hover, span.addprodSub:hover{
     cursor: pointer;
 }
 
@@ -81,12 +81,17 @@ span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprod
   z-index: 100;
   background: white;
   border-radius: 10px;
-  width: 30%;
+  width: 34%;
   top: 25vh;
   left: 35%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   display: none;
-  height: 45vh;
+  height: 55vh;
+}
+
+.modal-delete .deleteBody{
+  width: 85%;
+  margin: 0 auto;
 }
 
 .modal-delete.visible {
@@ -105,6 +110,24 @@ span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprod
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   display: none;
   height: 45vh;
+}
+
+.modal-add-items {
+  position: fixed;
+  z-index: 100;
+  background: white;
+  border-radius: 10px;
+  width: 45%;
+  top: 20vh;
+  left: 30%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: none;
+  height: 65vh;
+}
+
+.modal-add-items.visible {
+  display: block;
+  animation: fade-slide-in 0.3s ease-out forwards;
 }
 
 .modal-qty-update > .qtyUpdateBody{
@@ -155,7 +178,7 @@ span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprod
 }
 
 
-.modal h3, .modal-delete h3, .modal-qty-update h3{
+.modal h3, .modal-delete h3, .modal-qty-update h3, .modal-add-items h3{
   margin-bottom: 0.5rem;
   background: #0C2E82;
   color: white;
@@ -166,7 +189,7 @@ span.editprod:hover, span.deleteprod:hover, span.updatequan:hover, span.editprod
   
 }
 
-.modal > .editBody{
+.modal > .editBody, .modal-add-items > .editBody{
   /* margin-top: 1%; */
   display: grid;
   grid-template-columns: 45% 45%;
@@ -214,10 +237,10 @@ div.editDescription button:hover, .removeProduct button:hover, .qtyUpdateBtns bu
   margin-top: 0;
 }
 
-.cancelUpdate, .cancelDelete, .cancelQtyUpdate{
+.cancelUpdate, .cancelDelete, .cancelQtyUpdate, .cancelAddItem{
   background: rgb(190, 32, 32);
 }
-.doUpdate, .doDelete, .doQtyUpdate{
+.doUpdate, .doDelete, .doQtyUpdate, .doAddItem{
   background: #0C2E82;
 }
 

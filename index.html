@@ -47,9 +47,11 @@
         <div class="deleteBody">
             <div class="deleteDetails">
                 <p>Are you sure you want to delete Product with <br>
-                    Name: <span class="prName">this products </span><br>
-                    Quantity: <span class="prQuantity">this quantity</span><br>
-                    Category: <span class="prCategory">this category</span>
+                    ProductID: <span id="prID">this products </span><br>
+                    Name: <span id="prName">this products </span><br>
+                    Quantity: <span id="prQuantity">this quantity</span><br>
+                    Category: <span id="prCategory">this category</span><br>
+                    Brand: <span id="prBrand">this category</span><br>
                     from your Inventory?
                 </p>
             </div>
@@ -78,6 +80,37 @@
                 <button class="cancelQtyUpdate">CANCEL</button>
                 <button class="doQtyUpdate">UPDATE QTY</button>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR ADDING ITEMS TO THE INVENTORY -->
+    <div class="modal-add-items" id="modal-add-items">
+        <h3>Inventory Intake</h3>
+        <div class="editBody">
+                <div class="editDetails">
+                    <p>PRODUCT NAME</p>
+                    <input type="text" id="ppName">
+                    <p>PRODUCT PRICE (PER PIECE)</p>
+                    <input type="text" id="ppPrice">
+                    <p>PRODUCT MANUFACTURER</p>
+                    <input type="text" id="ppManufacturer">
+                    <p>QUANTITY</p>
+                    <input type="number" id="ppQuantity">
+                </div>
+                <div class="editDescription">
+                
+                    <p>PRODUCT STORAGE</p>
+                    <input type="text" id="ppStorage">
+                    <p>RAM</p>
+                    <input type="text" id="ppRAM">
+                    <p>BATTERY</p>
+                    <input type="text" id="ppBattery">
+                    <p>DISPLAY</p>
+                    <input type="text" id="ppDisplay">
+                    <button class="cancelAddItem">CANCEL</button>
+                    <button class="doAddItem">UPDATE PRODUCT</button>
+                </div>
+            
         </div>
     </div>
 
