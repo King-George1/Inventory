@@ -267,6 +267,10 @@ div.summary{
   text-align: center;
 }
 
+main > header{
+  margin-bottom: 1%;
+}
+
 .totalNumberOfItems{
   border:3px solid #0C2E82;
 }
